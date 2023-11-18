@@ -28,34 +28,34 @@ public class PlayerMoviment : MonoBehaviour
         Die();
     }
 
-    void OnJump(InputValue value) 
+    void OnJump(InputValue value)
     {
         HandleJump(value);
     }
 
-    void HandleJump(InputValue value) 
+    void HandleJump(InputValue value)
     {
         if (!playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) return;
 
-        if (value.isPressed) 
+        if (value.isPressed)
         {
             playerRigidbody2D.velocity += new Vector2(0f, jumpSpeed);
         }
     }
 
-    void OnMove(InputValue value) 
+    void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
 
-    void Run() 
+    void Run()
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, playerRigidbody2D.velocity.y);
         playerRigidbody2D.velocity = playerVelocity;
     }
-    void Die() 
+    void Die()
     {
-        if (playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies"))) 
+        if (playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies")))
         {
             isAlive = false;
         }
