@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMoviment : MonoBehaviour
 {
@@ -11,21 +12,22 @@ public class PlayerMoviment : MonoBehaviour
 
     Rigidbody2D playerRigidbody2D;
     CapsuleCollider2D playerCapsuleCollider2D;
+    Player player;
     Vector2 moveInput;
-    bool isAlive = true;
 
     void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        player = GetComponent<Player>();
     }
 
     void Update()
     {
-        if (!isAlive) { return; }
+        if (!player.IsAlive) { return; }
 
         Run();
-        Die();
+        FlipSprite();
     }
 
     void OnJump(InputValue value)
@@ -53,11 +55,14 @@ public class PlayerMoviment : MonoBehaviour
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, playerRigidbody2D.velocity.y);
         playerRigidbody2D.velocity = playerVelocity;
     }
-    void Die()
+
+    void FlipSprite()
     {
-        if (playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        bool playerHasHorizontalSpeed = Mathf.Abs(playerRigidbody2D.velocity.x) > Mathf.Epsilon;
+
+        if (playerHasHorizontalSpeed)
         {
-            isAlive = false;
+            transform.localScale = new Vector2(Mathf.Sign(playerRigidbody2D.velocity.x), 1f);
         }
     }
 }
