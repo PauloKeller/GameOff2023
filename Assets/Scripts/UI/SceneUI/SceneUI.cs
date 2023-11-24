@@ -11,12 +11,13 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        scoreText.text = player.PlayerScore.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = player.PlayerScore.ToString();
+        if (player != null) {
+            scoreText.text = player.PlayerScore.ToString();
+        }
     }
 }
