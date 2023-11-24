@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D playerRigidbody2D;
     CapsuleCollider2D playerCapsuleCollider2D;
-    float playerScore = 0;
+    float playerScore = 0f;
     bool isAlive = true;
 
     public float PlayerScore
