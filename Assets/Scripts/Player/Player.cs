@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] PowerUps[] playerPowerUps = new PowerUps[] { };
     CapsuleCollider2D playerCapsuleCollider2D;
-    float playerScore = 0;
+    float playerScore = 0f;
     bool isAlive = true;
 
     public float PlayerScore
