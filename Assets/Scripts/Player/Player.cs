@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D playerRigidbody2D;
+    [SerializeField] PowerUps[] playerPowerUps = new PowerUps[] { };
     CapsuleCollider2D playerCapsuleCollider2D;
     float playerScore = 0;
     bool isAlive = true;
@@ -22,10 +23,15 @@ public class Player : MonoBehaviour
         set { isAlive = value; }
     }
 
+    public PowerUps[] PlayerPowerUps 
+    {
+        get { return playerPowerUps; }
+        set { playerPowerUps = value; }
+    }
+
     private void Start()
     {
-        playerRigidbody2D = GetComponent<Rigidbody2D>();
-        playerCapsuleCollider2D = GetComponent<CapsuleCollider2D>();   
+        playerCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -33,7 +39,7 @@ public class Player : MonoBehaviour
         CheckTouchingLayer();
     }
 
-    void CheckTouchingLayer() 
+    void CheckTouchingLayer()
     {
         if (playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies"))) Die();
     }
