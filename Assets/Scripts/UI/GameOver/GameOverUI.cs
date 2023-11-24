@@ -14,4 +14,9 @@ public class GameOverUI : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void NinjaShopTapped() 
+    {
+        SceneManager.LoadScene(2);
+    }
 }
