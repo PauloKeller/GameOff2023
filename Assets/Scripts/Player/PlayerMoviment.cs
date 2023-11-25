@@ -14,12 +14,14 @@ public class PlayerMoviment : MonoBehaviour
     CapsuleCollider2D playerCapsuleCollider2D;
     Player player;
     Vector2 moveInput;
+    Animator playerAnimator;
 
     void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
         player = GetComponent<Player>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -54,6 +56,9 @@ public class PlayerMoviment : MonoBehaviour
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, playerRigidbody2D.velocity.y);
         playerRigidbody2D.velocity = playerVelocity;
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(playerRigidbody2D.velocity.x) > Mathf.Epsilon;
+        playerAnimator.SetBool("IsRunning", playerHasHorizontalSpeed);
     }
 
     void FlipSprite()
@@ -62,9 +67,7 @@ public class PlayerMoviment : MonoBehaviour
 
         if (playerHasHorizontalSpeed)
         {
-            var xScale = Mathf.Sign(playerRigidbody2D.velocity.x);
-            Debug.Log($"X scale value {xScale}");
-            //transform.localScale = new Vector2(Mathf.Sign(playerRigidbody2D.velocity.x), 1f);
+            transform.localScale = new Vector2(Mathf.Sign(playerRigidbody2D.velocity.x), 1f);
         }
     }
 }
