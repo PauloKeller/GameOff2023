@@ -10,11 +10,11 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
 
-    Player player;
+    GameSession gameSession;
 
     private void Start()
     {
-        player = GetComponent<Player>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     void OnFire(InputValue value)
@@ -23,7 +23,7 @@ public class PlayerGun : MonoBehaviour
     }
 
     void FireWeapon() {
-        if (player.PlayerPowerUps.Contains(PowerUps.NinjaKunai))
+        if (gameSession.PlayerPowerUps.Contains(PowerUps.NinjaKunai))
         {
             Instantiate(bullet, gun.position, transform.rotation);
         }

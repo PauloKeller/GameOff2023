@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Ninja Shuriken
   price: 50
+  itemImage: {fileID: 0}
+  powerUp: 1

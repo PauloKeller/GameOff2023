@@ -3,23 +3,46 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using System;
+using System.Linq;
+using static UnityEditor.Progress;
 
 public class ShopListContent : MonoBehaviour
 {
     [SerializeField] List<ShopItemSO> shopItemSOs = new List<ShopItemSO>();
-    [SerializeField] GameObject shopItemTemplate; 
+    [SerializeField] GameObject shopItemTemplate;
+
+    List<PowerUps> playerPowerUps = new List<PowerUps>();
+    List<ShopItemSO> filteredItens = new List<ShopItemSO>();
+    GameSession gameSession;
 
     void Start()
     {
+        gameSession = FindObjectOfType<GameSession>();
         GenerateShopItemList();
+    }
+
+    List<ShopItemSO> FilterAlreadyObtainedPowerUps()
+    {
+        var playerPowerUps = gameSession.LoadPlayerPowerUps();
+        this.playerPowerUps = playerPowerUps.ToList();
+        var filteredItens = shopItemSOs.Where(item => !playerPowerUps.Contains(item.PowerUp));
+
+        foreach (var item in filteredItens) 
+        {
+            Debug.Log($"Filtered item {item.ItemName}");
+        }
+
+        return filteredItens.ToList();
     }
 
     void GenerateShopItemList() 
     {
+        filteredItens = FilterAlreadyObtainedPowerUps();
         GameObject shopListItemGameObject;
-        for (int index = 0; index < shopItemSOs.Count; index++)
+
+        for (int index = 0; index < filteredItens.Count; index++)
         {
-            var shopItemSO = shopItemSOs[index];
+            var shopItemSO = filteredItens[index];
             shopListItemGameObject = Instantiate(shopItemTemplate, transform);
             var itemValue = $"{shopItemSO.Price}G";
             shopListItemGameObject.GetComponent<ShopItemTemplate>()
@@ -34,6 +57,27 @@ public class ShopListContent : MonoBehaviour
 
     void ItemClicked(int itemIndex)
     {
-        Debug.Log($"Clicked on item {itemIndex}");
+        var item = filteredItens[itemIndex];
+
+        if (gameSession.Coins >= item.Price)
+        {
+            playerPowerUps.Add(item.PowerUp);
+            gameSession.SavePlayerPowerUps(playerPowerUps.ToArray());
+
+            ClearShopList();
+            GenerateShopItemList();
+        }
+        else 
+        {
+            Debug.Log($"Not enoguth gold to buy {item.ItemName}");
+        }
+    }
+
+    void ClearShopList() 
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
