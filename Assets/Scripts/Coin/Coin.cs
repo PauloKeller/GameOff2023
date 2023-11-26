@@ -7,18 +7,17 @@ public class Coin : MonoBehaviour
     [SerializeField] int points = 1;
 
     bool wasCollected = false;
-    PlayerWallet playerWallet;
-
+    GameSession gameSession;
     void Start()
     {
-        playerWallet = FindObjectOfType<PlayerWallet>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && !wasCollected) 
         {
-            playerWallet.Coins += points;
+            gameSession.Coins += points;
             wasCollected = true;
             gameObject.SetActive(false);
             Destroy(this.gameObject);

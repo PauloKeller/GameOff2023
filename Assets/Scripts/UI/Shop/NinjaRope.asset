@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Ninja Rope
   price: 100
+  itemImage: {fileID: 0}
+  powerUp: 2

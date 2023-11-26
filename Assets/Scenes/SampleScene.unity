@@ -529,7 +529,6 @@ GameObject:
   - component: {fileID: 444404167}
   - component: {fileID: 444404168}
   - component: {fileID: 444404169}
-  - component: {fileID: 444404170}
   - component: {fileID: 444404171}
   - component: {fileID: 444404172}
   - component: {fileID: 444404173}
@@ -678,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpSpeed: 30
+  jumpSpeed: 35
 --- !u!70 &444404169
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -714,18 +713,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.022006303, y: -0.098733425}
   m_Size: {x: 0.8935856, y: 1.6823168}
   m_Direction: 0
---- !u!114 &444404170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444404162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa4d432cc49d4ae4086b022d0afe58b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &444404171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583240894af7b7e43b3a9149a04457fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPowerUps: 00000000
 --- !u!95 &444404173
 Animator:
   serializedVersion: 5
@@ -3269,6 +3255,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a41b4a05c87b234bb688bbb23c27aad, type: 3}
+--- !u!1 &1205253827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205253829}
+  - component: {fileID: 1205253828}
+  m_Layer: 0
+  m_Name: GameSession
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1205253828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205253827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b515a6d492b0050488a2c5117662c445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
+  playerPowerUps: 
+--- !u!4 &1205253829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205253827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.81029874, y: -6.27119, z: 0.022835417}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480778008
 GameObject:
   m_ObjectHideFlags: 0
@@ -5075,3 +5107,4 @@ SceneRoots:
   - {fileID: 203272553343137012}
   - {fileID: 113670934}
   - {fileID: 498606197}
+  - {fileID: 1205253829}

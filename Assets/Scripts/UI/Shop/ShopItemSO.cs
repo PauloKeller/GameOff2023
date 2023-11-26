@@ -6,11 +6,14 @@ using UnityEngine;
 public class ShopItemSO : ScriptableObject
 {
     [SerializeField] string itemName = "Item name";
-    [SerializeField] float price = 0f;
+    [SerializeField] int price = 0;
     [SerializeField] Sprite itemImage;
+    [SerializeField] PowerUps powerUp;
 
     public string ItemName { get { return itemName; } }
     public float Price { get { return price; } }
 
     public Sprite ItemImage { get {  return itemImage; } }
+
+    public PowerUps PowerUp { get { return powerUp; } }
 }

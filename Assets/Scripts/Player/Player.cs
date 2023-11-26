@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] PowerUps[] playerPowerUps = new PowerUps[] { };
     CapsuleCollider2D playerCapsuleCollider2D;
     float playerScore = 0f;
     bool isAlive = true;
+    GameSession gameSession;
 
     public float PlayerScore
     {
@@ -21,12 +23,6 @@ public class Player : MonoBehaviour
     {
         get { return isAlive; }
         set { isAlive = value; }
-    }
-
-    public PowerUps[] PlayerPowerUps 
-    {
-        get { return playerPowerUps; }
-        set { playerPowerUps = value; }
     }
 
     private void Start()
@@ -47,14 +43,13 @@ public class Player : MonoBehaviour
     public void Die()
     {
         isAlive = false;
-        StartCoroutine(LoadGameSceneCoroutine(1.0f));
+        StartCoroutine(LoadGameSceneCoroutine());
     }
-
     // TODO: Move this to player or scene manager
-    IEnumerator LoadGameSceneCoroutine(float delay)
+    IEnumerator LoadGameSceneCoroutine()
     {
-        yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(1);
+        yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
     }
 }
