@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour
 {
-    Player player;
+    
     [SerializeField] TextMeshProUGUI scoreText;
-    // Start is called before the first frame update
+
+    GameSession gameSession;
+   
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player != null) {
-            scoreText.text = player.PlayerScore.ToString();
-        }
+        scoreText.text = gameSession.Score.ToString();
     }
 }

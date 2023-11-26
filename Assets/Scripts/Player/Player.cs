@@ -9,15 +9,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     CapsuleCollider2D playerCapsuleCollider2D;
-    float playerScore = 0f;
     bool isAlive = true;
-    GameSession gameSession;
-
-    public float PlayerScore
-    {
-        get { return playerScore; }
-        set { playerScore = value; }
-    }
 
     public bool IsAlive
     {

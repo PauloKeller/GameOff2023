@@ -27,11 +27,6 @@ public class ShopListContent : MonoBehaviour
         this.playerPowerUps = playerPowerUps.ToList();
         var filteredItens = shopItemSOs.Where(item => !playerPowerUps.Contains(item.PowerUp));
 
-        foreach (var item in filteredItens) 
-        {
-            Debug.Log($"Filtered item {item.ItemName}");
-        }
-
         return filteredItens.ToList();
     }
 

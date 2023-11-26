@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     Rigidbody2D bulletRigidbody2D;
     PlayerMoviment playerMoviment;
-    Player player;
+    GameSession gameSession;
     float xSpeed = 0f;
 
     void Start()
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         bulletRigidbody2D = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0, 0, 90);
         playerMoviment = FindObjectOfType<PlayerMoviment>();
-        player = FindObjectOfType<Player>();
+        gameSession = FindObjectOfType<GameSession>();
         xSpeed = playerMoviment.transform.localScale.x * bulletSpeed;
     }
 
@@ -30,8 +30,8 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Enemy") 
         {
             var enemy = other.GetComponent<Enemy>();
-            player.PlayerScore += enemy.ScorePoints;
-            Debug.Log($"Player Score: {player.PlayerScore}");
+            gameSession.Score += enemy.ScorePoints;
+
             Destroy(other.gameObject);
         }
         Destroy(gameObject);
