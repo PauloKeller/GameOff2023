@@ -49,7 +49,7 @@ public class GameOverUI : MonoBehaviour
     public void PlayAgainTapped() 
     {
         ResetScore();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 
     public void QuitTapped() 
@@ -60,6 +60,6 @@ public class GameOverUI : MonoBehaviour
     public void NinjaShopTapped()
     {
         ResetScore();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }
