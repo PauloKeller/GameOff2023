@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using UnityEngine;
 using System;
 using System.Linq;
-using static UnityEditor.Progress;
 
 public class ShopListContent : MonoBehaviour
 {
