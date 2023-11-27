@@ -23,7 +23,7 @@ public class PlayerGun : MonoBehaviour
     }
 
     void FireWeapon() {
-        if (gameSession.PlayerPowerUps.Contains(PowerUps.NinjaKunai))
+        if (gameSession.PowerUps.Contains(PowerUps.NinjaKunai))
         {
             Instantiate(bullet, gun.position, transform.rotation);
         }

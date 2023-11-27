@@ -8,13 +8,15 @@ using UnityEngine;
 public enum PlayerPrefsKeys 
 {
     Coins,
-    PowerUps
+    PowerUps,
+    Score
 }
 
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int coins = 0;
-    [SerializeField] PowerUps[] playerPowerUps = new PowerUps[] { };
+    [SerializeField] PowerUps[] powerUps = new PowerUps[] { };
+    [SerializeField] int score = 0;
 
     public int Coins
     {
@@ -27,10 +29,16 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public PowerUps[] PlayerPowerUps
+    public PowerUps[] PowerUps
     {
-        get { return playerPowerUps; }
-        set { playerPowerUps = value; }
+        get { return powerUps; }
+        set { powerUps = value; }
+    }
+
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
     }
 
     private void Awake()
@@ -50,8 +58,7 @@ public class GameSession : MonoBehaviour
 
     void LoadGameSessionData()
     {
-        //PlayerPrefs.SetInt(nameof(PlayerPrefsKeys.PowerUps), -1);
-        playerPowerUps = LoadPlayerPowerUps();
+        powerUps = LoadPlayerPowerUps();
         coins = LoadCoins();
     }
 
@@ -83,5 +90,15 @@ public class GameSession : MonoBehaviour
             Debug.Log($"Power up loaded: {powerUp}");
         } 
         return playerPowerUps.ToArray();
+    }
+
+    public void SaveLastScore()
+    {
+        PlayerPrefs.SetInt(nameof(PlayerPrefsKeys.Score), score);
+    }
+
+    public int LoadHighScore() 
+    {
+        return PlayerPrefs.GetInt(nameof(PlayerPrefsKeys.Score), 0);
     }
 }
