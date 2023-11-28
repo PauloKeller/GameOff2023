@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     void CheckTouchingLayer()
     {
-        if (playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies"))) Die();
+        if (playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Spikes"))) Die();
     }
 
     public void Die()

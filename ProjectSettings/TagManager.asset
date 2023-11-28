@@ -19,8 +19,8 @@ TagManager:
   - Interactables
   - Bullets
   - EnemyBullets
-  - 
-  - 
+  - Spikes
+  - Bouncing
   - 
   - 
   - 
@@ -45,8 +45,14 @@ TagManager:
   - name: Background
     uniqueID: 3601326297
     locked: 0
+  - name: Boucing
+    uniqueID: 2707896211
+    locked: 0
   - name: Platforms
     uniqueID: 1927741769
+    locked: 0
+  - name: Spikes
+    uniqueID: 553628027
     locked: 0
   - name: Enemies
     uniqueID: 2144894719

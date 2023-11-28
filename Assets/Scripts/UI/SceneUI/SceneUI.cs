@@ -7,6 +7,7 @@ public class PlayerUI : MonoBehaviour
 {
     
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI coinsText;
 
     GameSession gameSession;
    
@@ -18,5 +19,6 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         scoreText.text = gameSession.Score.ToString();
+        coinsText.text = gameSession.Coins.ToString();
     }
 }

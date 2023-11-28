@@ -8,10 +8,11 @@ using UnityEngine.SceneManagement;
 public class PlayerMoviment : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpForce = 20f;
 
     Rigidbody2D playerRigidbody2D;
-    CapsuleCollider2D playerCapsuleCollider2D;
+    CapsuleCollider2D playerBodyCollider2D;
+    BoxCollider2D playerFeetCollider;
     Player player;
     Vector2 moveInput;
     Animator playerAnimator;
@@ -19,7 +20,8 @@ public class PlayerMoviment : MonoBehaviour
     void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
-        playerCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        playerBodyCollider2D = GetComponent<CapsuleCollider2D>();
+        playerFeetCollider = GetComponent<BoxCollider2D>();
         player = GetComponent<Player>();
         playerAnimator = GetComponent<Animator>();
     }
@@ -39,11 +41,11 @@ public class PlayerMoviment : MonoBehaviour
 
     void HandleJump(InputValue value)
     {
-        if (!playerCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) return;
+        if (!playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) return;
 
         if (value.isPressed)
         {
-            playerRigidbody2D.velocity += new Vector2(0f, jumpSpeed);
+            playerRigidbody2D.velocity += new Vector2(0f, jumpForce);
         }
     }
 
