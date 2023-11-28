@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ShootingEnemy : MonoBehaviour
+public class ShootingEnemy : Enemy
 {
 
     [SerializeField] GameObject bullet;
@@ -12,13 +12,6 @@ public class ShootingEnemy : MonoBehaviour
 
     bool canFireAgain = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (canFireAgain) StartCoroutine(FireCoroutine());

@@ -25,7 +25,6 @@ public class GameSession : MonoBehaviour
         {
             coins = value;
             SaveCoins();
-            Debug.Log("Coins: " + coins);
         }
     }
 
@@ -74,7 +73,6 @@ public class GameSession : MonoBehaviour
 
     public void SavePlayerPowerUps(PowerUps[] playerPowerUps) 
     {
-        Debug.Log($"Saved power ups: {playerPowerUps.Length - 1}");
         PlayerPrefs.SetInt(nameof(PlayerPrefsKeys.PowerUps), playerPowerUps.Length - 1);
     }
 
@@ -87,7 +85,6 @@ public class GameSession : MonoBehaviour
         {
             PowerUps powerUp = (PowerUps)Enum.ToObject(typeof(PowerUps), index);
             playerPowerUps.Add(powerUp);
-            Debug.Log($"Power up loaded: {powerUp}");
         } 
         return playerPowerUps.ToArray();
     }
