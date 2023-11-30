@@ -43,7 +43,7 @@ public class GameOverUI : MonoBehaviour
     string GetHighScoreText()
     {
         string scoreText = gameSession.LoadHighScore().ToString();
-        return $"Your higher score was: {scoreText}";
+        return $"Your highest score was: {scoreText}";
     }
 
     public void PlayAgainTapped() 

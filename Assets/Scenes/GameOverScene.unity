@@ -565,7 +565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your higher score was: 9999999999
+  m_text: 'Your highest score was: 9999999999
 
 '
   m_isRightToLeft: 0
