@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     CapsuleCollider2D playerCapsuleCollider2D;
+    SpriteRenderer playerSpriteRenderer;
     bool isAlive = true;
 
     public bool IsAlive
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        Debug.Log(playerSpriteRenderer.flipX);
     }
 
     void Update()
