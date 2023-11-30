@@ -27,9 +27,5 @@ public class PlayerGun : MonoBehaviour
         {
             Instantiate(bullet, gun.position, transform.rotation);
         }
-        else
-        {
-            Debug.Log("Does not have a weapon");
-        }
     }
 }

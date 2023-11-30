@@ -4,9 +4,12 @@ using UnityEngine.UI;
 using UnityEngine;
 using System;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 
 public class ShopListContent : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI notEnoughGoldText;
     [SerializeField] List<ShopItemSO> shopItemSOs = new List<ShopItemSO>();
     [SerializeField] GameObject shopItemTemplate;
 
@@ -18,6 +21,7 @@ public class ShopListContent : MonoBehaviour
     {
         gameSession = FindObjectOfType<GameSession>();
         GenerateShopItemList();
+        notEnoughGoldText.text = "";
     }
 
     List<ShopItemSO> FilterAlreadyObtainedPowerUps()
@@ -52,18 +56,22 @@ public class ShopListContent : MonoBehaviour
     void ItemClicked(int itemIndex)
     {
         var item = filteredItens[itemIndex];
+        notEnoughGoldText.text = "";
 
         if (gameSession.Coins >= item.Price)
         {
             playerPowerUps.Add(item.PowerUp);
+            gameSession.PowerUps = playerPowerUps.ToArray();
             gameSession.SavePlayerPowerUps(playerPowerUps.ToArray());
+            gameSession.Coins -= item.Price;
+            gameSession.SaveCoins();
 
             ClearShopList();
             GenerateShopItemList();
         }
         else 
         {
-            Debug.Log($"Not enoguth gold to buy {item.ItemName}");
+            notEnoughGoldText.text = "You don't have enough gold!";
         }
     }
 

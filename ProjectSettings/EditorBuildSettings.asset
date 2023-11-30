@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 8709917147c032a43beffc99942c8542
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: ba6d7da356554ee46b5ba355e9c37691
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9b5196abdd3eb9748bd2126d8b04671f, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: efa047d3ed211e747b45f7d7681cb1e3, type: 2}
