@@ -4,7 +4,5 @@ using UnityEngine;
 
 public enum PowerUps
 {
-    NinjaKunai,
-    NinjaShuriken,
-    NinjaRope
+    NinjaKunai
 }

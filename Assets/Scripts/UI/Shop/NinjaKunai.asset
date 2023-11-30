@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Ninja Kunai
   price: 20
+  itemImage: {fileID: -934024917, guid: adf43af127a805042bd0d8e362677d97, type: 3}
+  powerUp: 0
