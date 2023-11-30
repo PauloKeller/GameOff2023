@@ -7,6 +7,7 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] float bulletSpeed = 10f;
     Rigidbody2D bulletRigidBody2D;
     Player player;
+
     void Start()
     {
         bulletRigidBody2D = GetComponent<Rigidbody2D>();
@@ -16,6 +17,12 @@ public class EnemyBullet : MonoBehaviour
     void Update()
     {
         bulletRigidBody2D.velocity = new Vector2(bulletSpeed, 0f);
+    }
+
+    public void SetBulletHorizontalAxis(float xAxis){ 
+        if(xAxis < 0f){ 
+            bulletSpeed = -bulletSpeed;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
