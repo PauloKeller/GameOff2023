@@ -11,7 +11,7 @@ public class ShopItemSO : ScriptableObject
     [SerializeField] PowerUps powerUp;
 
     public string ItemName { get { return itemName; } }
-    public float Price { get { return price; } }
+    public int Price { get { return price; } }
 
     public Sprite ItemImage { get {  return itemImage; } }
 

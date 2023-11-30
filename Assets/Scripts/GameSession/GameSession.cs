@@ -71,7 +71,7 @@ public class GameSession : MonoBehaviour
         return PlayerPrefs.GetInt(nameof(PlayerPrefsKeys.Coins), 0);
     }
 
-    public void SavePlayerPowerUps(PowerUps[] playerPowerUps) 
+    public void SavePlayerPowerUps(PowerUps[] playerPowerUps)
     {
         PlayerPrefs.SetInt(nameof(PlayerPrefsKeys.PowerUps), playerPowerUps.Length - 1);
     }
